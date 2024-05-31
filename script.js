@@ -1,42 +1,45 @@
 let container = document.querySelector(".container");
-let no_of_squares = 224;
-let colors = [
-  "green",
-  "blue",
+let noBoxes = 280;
+let color = [
   "red",
+  "green",
+  "yellow",
   "pink",
   "purple",
-  "orange",
-  "orangered",
   "voilvet",
+  "grey",
   "lightgreen",
   "lightblue",
-  "skyble",
-  "white",
-  "",
+  "golden",
+  "aqua",
+  "blue",
+  "skyblue",
+  "darkblue",
+  "darkgreen",
 ];
 
-function randcomColor(colors) {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
-function setColor(el) {
-  el.style.backgroundColor = randcomColor(colors);
-}
-function unSetColor(el) {
-  el.style.backgroundColor = "#1D1D1D";
-  el.style.boxShadow = "0 0 2px rgba(0,0,0,0.3)";
+function randomColor(color) {
+  return color[Math.floor(Math.random() * color.length)]
 }
 
 
-for (let i = 0; i < no_of_squares; i++) {
-  const square = document.createElement("div");
-  square.classList.add("boxes");
-  square.addEventListener("mouseover", () => {
-    setColor(square);
-  });
-  square.addEventListener("mouseout", () => {
-    unSetColor(square);
-  });
-  container.appendChild(square);
+function setColor (element){
+  element.style.backgroundColor = randomColor(color);
+}
+function unSetColor (element){
+  element.style.backgroundColor = "#1D1D1D";
+  element.style.boxShadow = "0 0 2px rgba(0,0,0,0.3)";
+}
+
+
+for(let i = 0; i < noBoxes; i++){
+  let box = document.createElement("div");
+  box.classList.add("boxes");
+  box.addEventListener("mouseover",()=>{
+    setColor(box);
+  })
+  box.addEventListener("mouseout",()=>{
+    unSetColor(box);
+  })
+  container.appendChild(box);
 }
